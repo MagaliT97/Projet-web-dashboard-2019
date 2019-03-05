@@ -1,0 +1,25 @@
+.datepicker{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    padding-left:9px; 
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 55%;
+}
+
+.datepicker2{
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    display: inline-block;
+    padding-left:9px; 
+    padding-top: 7px;
+    padding-bottom: 7px;
+    width: 93%;
+}
+
+.number-repeat{
+    width: 1em;
+}
