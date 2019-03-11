@@ -8,3 +8,17 @@
 #dropdown-basic-button{
     margin-right: 1em;
 }
+
+@media screen and (max-width:900px)
+{
+    .mr-md-2{
+        display:none;
+       
+    }
+
+    .buttonSearch{
+        display:none;
+    }
+
+    
+}

@@ -4,22 +4,25 @@
   "private": true,
   "dependencies": {
     "bootstrap": "^4.3.1",
-    "react": "^16.8.2",
+    "react": "^16.8.4",
     "react-bootstrap": "^1.0.0-beta.5",
     "react-burger-menu": "^2.6.5",
     "react-calendar": "^2.18.1",
     "react-custom-scrollbars": "^4.2.1",
     "react-datepicker": "^2.1.0",
-    "react-dom": "^16.8.2",
+    "react-dom": "^16.8.4",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.5",
+    "reactstrap": "^7.1.0",
     "recharts": "^1.5.0"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "storybook": "start-storybook -p 9009 -s public",
+    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -29,5 +32,13 @@
     "not dead",
     "not ie <= 11",
     "not op_mini all"
-  ]
+  ],
+  "devDependencies": {
+    "@storybook/react": "^5.0.1",
+    "@storybook/addon-actions": "^5.0.1",
+    "@storybook/addon-links": "^5.0.1",
+    "@storybook/addons": "^5.0.1",
+    "@babel/core": "^7.3.4",
+    "babel-loader": "^8.0.5"
+  }
 }

@@ -1,6 +1,7 @@
 import React from 'react'
 import {Card} from "react-bootstrap";
 import {ComposedChart, Line, Legend, Bar, XAxis, YAxis, CartesianGrid, Tooltip,ReferenceLine} from 'recharts';
+import '../css/ComposedChart.css'
 
 const style = {
   top: 50,
@@ -47,17 +48,19 @@ const data = [
   },
 ];
 
+
 const GraphCurve= () => {
     return(
         <div>
         <Card bg="light">
-            <Card.Body>
+            <Card.Body className="ComposedChart">
             <Card.Title>Graphique présentant les soldes et le total des dépenses</Card.Title>
             <Card.Subtitle>2019</Card.Subtitle>
-            <ComposedChart
+            <ComposedChart className="ComposedChart"
             width={600}
             height={190}
-            data={data}>
+            data={data}
+            mdheight={200}>
         <CartesianGrid stroke="#f5f5f5" />
         <XAxis dataKey="name" />
         <YAxis />

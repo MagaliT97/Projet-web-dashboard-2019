@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 const NavigationBar = () => {
     return(
         <div>
-        <SideBar pageWrapId={"page-wrap"}/>
+        <SideBar pageWrapId={"page-wrap"} className="SideBar"/>
         <Navbar className="nav-bar" collapseOnSelect expand="lg" bg="primary" variant="dark"> 
        <Link to="/" >  <Navbar.Brand href="#home" className="text-dashboard">DashBoard </Navbar.Brand></Link>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
@@ -16,7 +16,7 @@ const NavigationBar = () => {
             <Nav className="mr-auto" >
             <Form inline>
                 <FormControl type="text" placeholder="" className="mr-md-2" style={{ width: '15em'}} />
-                <Button variant="outline-light">Rechercher</Button>
+                <Button variant="outline-light" className="buttonSearch">Rechercher</Button>
             </Form>
             </Nav>
             <DropdownButton id="dropdown-basic-button" title="Formulaire">
@@ -24,13 +24,16 @@ const NavigationBar = () => {
             <Dropdown.Item href="#/action-2"> <Link to="/FormRevenu">Ajout revenu </Link> </Dropdown.Item>
             <Dropdown.Item href="#/action-3">Ajout catégorie</Dropdown.Item>
             </DropdownButton>
-            <i class="fas fa-user fa-2xl"></i>
-            <Nav>
-            <NavDropdown  alignRight title="Profil" id="collasible-nav-dropdown">
-                <NavDropdown.Item href="#action/3.1">Se déconnecter</NavDropdown.Item>
-                <NavDropdown.Item href="#action/3.2">Aide</NavDropdown.Item>
-            </NavDropdown>
-            </Nav>
+
+            
+            <DropdownButton id="dropdown-basic-button" title="Menu" className="menu">
+            <Dropdown.Item href="#/action-1.2"> <Link to="/PieChartCategory">PieChartCategory</Link></Dropdown.Item>
+            <Dropdown.Item href="#/action-1.2"> <Link to="/GraphCurve">GraphCurve</Link> </Dropdown.Item>
+            <Dropdown.Item href="#/action-1.3"> <Link to="/PieChartBudget">PieChartBudget</Link> </Dropdown.Item>
+            <Dropdown.Item href="#/action-1.4"> <Link to="/ProgressBarComponent">ProgressBarComponent</Link> </Dropdown.Item>
+            <Dropdown.Item href="#/action-1.6"> <Link to="/Calendrier">Calendrier</Link> </Dropdown.Item>           
+            </DropdownButton>
+
         </Navbar.Collapse>
         </Navbar>
         </div>

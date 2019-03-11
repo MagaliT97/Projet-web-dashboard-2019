@@ -8,6 +8,8 @@ import ProgressionBarComponent from '../ProgressBarComponent';
 import TodoList from '../TodoList';
 import Calendrier from '../Calendrier';
 
+
+
 class DashBoard extends Component {
   
   state = {
@@ -48,14 +50,14 @@ class DashBoard extends Component {
   render() {
     return (
       <div>
-          <Container className="main-content">
+          <Container className="main-content" media="main">
             <Row>
-                <Col md={4}> <PieChartCategory/> </Col>
-                <Col md={8}> <GraphCurve/> </Col>
+                <Col lg={4} md={2}> <PieChartCategory/> </Col>
+                <Col lg={8} md={12}> <GraphCurve/> </Col>
             </Row>
             <Row className="Second-Row">
-                <Col md={4}><PieChartBudget/></Col>
-                <Col className="row2-col2" md={4} >
+                <Col lg={4}><PieChartBudget/></Col>
+                <Col className="row2-col2" lg={4}>
                   <Row className="progress1">
                     <ProgressionBarComponent/>
                    
@@ -69,7 +71,7 @@ class DashBoard extends Component {
                                     deleteItem={this.deleteItem}/>
                   </Row>
                 </Col>
-                <Col md={4}>
+                <Col lg={4}>
                    <Calendrier/>
                 </Col>
             </Row>

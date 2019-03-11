@@ -5,6 +5,14 @@ import {BrowserRouter,Route} from 'react-router-dom';
 import FormProject from './component/FormProject';
 import FormDepenses from './component/FormDepenses';
 import FormRevenu from './component/FormRevenu';
+import PieChartCategory from './component/PieChartCategory';
+import GraphCurve from './component/GraphCurve';
+import PieChartBudget from './component/PieChartBudget';
+import ProgressBarComponent from './component/ProgressBarComponent';
+import TodoList from './component/TodoList';
+import Calendrier from './component/Calendrier';
+
+
 
 class App extends Component {
   render() {
@@ -17,6 +25,12 @@ class App extends Component {
             <Route path='/FormProject' component={FormProject}/>
             <Route path='/FormDepenses' component={FormDepenses}/>
             <Route path='/FormRevenu' component={FormRevenu}/>
+            <Route path='/PieChartCategory' component={PieChartCategory}/>
+            <Route path='/GraphCurve' component={GraphCurve}/>
+            <Route path='/PieChartBudget' component={PieChartBudget}/>
+            <Route path='/ProgressBarComponent' component={ProgressBarComponent}/>
+            <Route path='/TodoList' component={TodoList}/>
+            <Route path='/Calendrier' component={Calendrier}/>
             </switch>
         </div>
         </BrowserRouter>

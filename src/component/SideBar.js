@@ -4,7 +4,7 @@ import {Link} from 'react-router-dom';
 export default props => {
   return (
     // Pass on our props
-    <Menu width={ '13%' } {...props}>
+    <Menu width={ '13%' } {...props} className="menu">
       
       <Link to="/" className="menu-item"> Dashboard </Link>
       <Link to="/FormProject" className="menu-item"> Nouveau projet </Link>
