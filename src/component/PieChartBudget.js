@@ -33,9 +33,9 @@ const PieChartBudget = () => {
             </Pie>
              </PieChart>
              <Card.Text>
-                Revenue: <span className="data-user">3810,00€</span> <br/>
-                Budget prévissionnel: <span className="data-user">3425,00€</span> <br/>
-                Solde prévissionnel: <span className="data-user">385€</span><br/> 
+                Revenu: <span className="data-user">3810,00€</span> <br/>
+                Budget prévisionnel: <span className="data-user">3425,00€</span> <br/>
+                Solde prévisionnel: <span className="data-user">385€</span><br/> 
             </Card.Text>
           </Card.Body>
         </Card>

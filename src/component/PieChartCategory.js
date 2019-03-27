@@ -3,8 +3,8 @@ import {Card} from "react-bootstrap";
 import '../css/PieChartCategory.css'
 import { PieChart, Pie, Sector, Cell,Legend} from 'recharts';
 
-const data = [{name: 'Maison/Habitat', value: 400}, {name: 'Obligation financières', value: 300},
-                  {name: 'Activités ordinaires', value: 240}, {name: 'Divertissement', value: 90}];
+const data = [{name: 'Maison/Habitat', value: 400}, {name: 'Obligation financière', value: 300},
+                  {name: 'Activité ordinaire', value: 240}, {name: 'Divertissement', value: 90}];
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042'];
 
 const style = {
