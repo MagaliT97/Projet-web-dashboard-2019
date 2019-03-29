@@ -3,6 +3,7 @@ import {Container,Form,Col,InputGroup,FormControl,Button,ButtonGroup} from 'reac
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../css/FormDepenses.css';
+import axios from 'axios';
 
 var displayDatePicker;
 var label_transaction;
@@ -14,28 +15,63 @@ export default class FormDepenses extends Component {
     startDate: new Date(),
     show:true,
     LastInput:false,
+
+    categorie:'',
+    description:'',
+    montant:'',
+    date:'',
   };
 
+  handleChange= (e) =>{
+    this.setState({
+       [e.target.id]: e.target.value,
+       date:this.state.startDate
+    })
+  }
+  handleSubmit= (e) =>{
+      e.preventDefault();
+      console.log(this.state);
+
+      const obj = {
+        categorie: this.state.categorie,
+        description: this.state.description,
+        montant: this.state.montant,
+        date:this.state.date
+      };
+      axios.post('http://localhost:4000/user/add', obj)
+          .then(res => console.log(res.data));
+      
+      this.setState({
+        categorie: '',
+        description: '',
+        montant: '',
+        date:''
+      })
+  }
+
+
+  /*On affiche juste la date dans le cas ou l'utilisateur ne coche pas "transaction récurrente" */
+
   Display= () =>{
-    if(this.state.show==true){
-      displayDatePicker= <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" selected={this.state.startDate} onChange={this.handleChange}/> 
+    if(this.state.show===true){
+      displayDatePicker= <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" selected={this.state.startDate} onChange={this.handleChangeDate}/> 
       label_transaction= <Form.Label>Date de la transaction</Form.Label>
     }
     else{
       displayDatePicker=null;
       label_transaction=null;
     }
-
   }
 
-  handleChange = (date) => {
+  handleChangeDate = (date) => {
     this.setState({
-      startDate: date
+      startDate: date,
+      date:date
     });
-    this.toggleCalendarButton()
+    //this.toggleCalendarButton()
   }
   toggleCalendar= () => {
-    if(this.state.show==true){
+    if(this.state.show===true){
       this.setState({
         show:false
       })
@@ -79,7 +115,7 @@ export default class FormDepenses extends Component {
                 Première occurence le:
               </InputGroup.Text>
             </InputGroup.Prepend>
-            <DatePicker className="datepicker2" dateFormat="dd/MM/yyyy h:mm aa" selected={this.state.startDate} onChange={this.handleChange}  
+            <DatePicker className="datepicker2" dateFormat="dd/MM/yyyy h:mm aa" selected={this.state.startDate} onChange={this.handleChangeDate}  
             showTimeSelect
             timeFormat="HH:mm"
             timeCaption="time"/>
@@ -106,7 +142,7 @@ export default class FormDepenses extends Component {
             <Button onClick={this.ChangeStateLastButton}>Nombre de fois</Button>
          </ButtonGroup> 
           <br/><br/>
-         {this.state.LastInput==true && this.displayLastInput()}
+         {this.state.LastInput===true && this.displayLastInput()}
          <br/>
       </div>
     )
@@ -117,10 +153,10 @@ export default class FormDepenses extends Component {
     return (
         <Container>
               <h4>Ajouter une dépense</h4>
-              <Form>
-              <Form.Group  controlId="category-select">
+              <Form onSubmit={this.handleSubmit} >
+              <Form.Group  controlId="categorie">
                 <Form.Label>Choissisez une catégorie</Form.Label>
-                <Form.Control as="select">
+                <Form.Control as="select" onChange={this.handleChange}>
                   <option>Alimentation/Supermarché</option>
                   <option>Habillement</option>
                   <option>Internet/TV/Téléphone</option>
@@ -137,12 +173,12 @@ export default class FormDepenses extends Component {
               <Form.Label>
                Description
               </Form.Label>
-                <Form.Control type="text" placeholder="Description"/>
+                <Form.Control type="text" placeholder="Description" onChange={this.handleChange}/>
               </Form.Group>
               <Form.Row>
             <Form.Group as={Col} md="3" controlId="montant">
             <Form.Label>Montant</Form.Label>
-            <Form.Control type="number" placeholder="Montant(€)" required />
+            <Form.Control type="number" onChange={this.handleChange} placeholder="Montant(€)" required />
           </Form.Group>
           <Form.Group as={Col} md="3" controlId="dateTransaction">
             {label_transaction}
@@ -153,7 +189,7 @@ export default class FormDepenses extends Component {
           label="Cette transaction est récurrente"
           />
 
-          {this.state.show==false&&this.displayTransactionModif()}
+          {this.state.show===false&&this.displayTransactionModif()}
 
           <Button variant="primary" type="submit">
           Ajouter

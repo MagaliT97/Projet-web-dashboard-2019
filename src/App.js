@@ -11,6 +11,8 @@ import PieChartBudget from './component/PieChartBudget';
 import ProgressBarComponent from './component/ProgressBarComponent';
 import TodoList from './component/TodoList';
 import Calendrier from './component/Calendrier';
+import DisplayDepense from './component/DisplayDepense';
+import EditDepense from './component/EditDepense';
 
 
 
@@ -20,7 +22,6 @@ class App extends Component {
         <BrowserRouter>
         <div>
             <NavigationBar/>
-            <div>Bonjour Magali !</div>
             <switch>
             <Route exact path='/' component={Home}/>
             <Route path='/FormProject' component={FormProject}/>
@@ -32,6 +33,10 @@ class App extends Component {
             <Route path='/ProgressBarComponent' component={ProgressBarComponent}/>
             <Route path='/TodoList' component={TodoList}/>
             <Route path='/Calendrier' component={Calendrier}/>
+            <Route path='/DisplayDepense' component={DisplayDepense}/>
+            <Route path='/edit/:id' component={EditDepense} />
+
+
             </switch>
         </div>
         </BrowserRouter>

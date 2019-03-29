@@ -16,7 +16,7 @@ export default class FormRevenu extends Component {
       };
     
       Display= () =>{
-        if(this.state.show==true){
+        if(this.state.show===true){
           displayDatePicker= <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" selected={this.state.startDate} onChange={this.handleChange}/> 
           label_transaction= <Form.Label>Date de la transaction</Form.Label>
         }
@@ -34,7 +34,7 @@ export default class FormRevenu extends Component {
         this.toggleCalendarButton()
       }
       toggleCalendar= () => {
-        if(this.state.show==true){
+        if(this.state.show===true){
           this.setState({
             show:false
           })
@@ -105,7 +105,7 @@ export default class FormRevenu extends Component {
                 <Button onClick={this.ChangeStateLastButton}>Nombre de fois</Button>
              </ButtonGroup> 
               <br/><br/>
-             {this.state.LastInput==true && this.displayLastInput()}
+             {this.state.LastInput===true && this.displayLastInput()}
              <br/>
           </div>
         )
@@ -138,7 +138,7 @@ export default class FormRevenu extends Component {
           label="Cette transaction est récurrente"
           />
 
-          {this.state.show==false&&this.displayTransactionModif()}
+          {this.state.show===false&&this.displayTransactionModif()}
 
           <Button variant="primary" type="submit">
           Ajouter
