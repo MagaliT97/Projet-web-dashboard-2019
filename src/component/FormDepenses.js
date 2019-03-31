@@ -157,15 +157,11 @@ export default class FormDepenses extends Component {
               <Form.Group  controlId="categorie">
                 <Form.Label>Choissisez une catégorie</Form.Label>
                 <Form.Control as="select" onChange={this.handleChange}>
-                  <option>Alimentation/Supermarché</option>
-                  <option>Habillement</option>
-                  <option>Internet/TV/Téléphone</option>
-                  <option>Tabac</option>
-                  <option>Impôts</option>
-                  <option> Logement/immobilier</option>
+                  <option>Maison/Habitat</option>
+                  <option>Obligation financière</option>
                   <option>Sports/Loisirs/Culture</option> 
-                  <option>Enfants</option>
-                  <option>Transports</option> 
+                  <option>Divertissement</option>
+                  <option>Transports</option>
                 </Form.Control>
               </Form.Group>
 
