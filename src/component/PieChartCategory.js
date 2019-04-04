@@ -6,9 +6,6 @@ import axios from 'axios';
 
 export default class PieChartCategory extends Component {
 
-
-  
-
   state = {
   
     data : [{name: 'Divertissement', value: 50},
@@ -21,14 +18,39 @@ export default class PieChartCategory extends Component {
 
 
   componentDidMount(){
-    axios.get('http://localhost:4000/user/piechart/')
+    axios.get('http://localhost:4000/depense/piechart/')
         .then(response => {
 
-          let copy = [{name: 'Divertissement', value: response.data[0].total},
-          {name: 'Maison/Habitat', value: response.data[1].total}, 
-          {name: 'Obligation financière', value: response.data[2].total},
-          {name: 'Sports/Loisirs/Culture', value: response.data[3].total}, 
-          {name: 'Transports', value: response.data[4].total}];
+        var divertissement=0;
+        var transports=0;
+        var sports=0;
+        var maison=0;
+        var finance=0;
+        var i;
+
+        for (i = 0; i < response.data.length; i++) {
+          if (response.data[i]._id === "Divertissement"){
+            divertissement = response.data[i].total;
+          }
+          if (response.data[i]._id ==="Transports"){
+            transports = response.data[i].total;
+          }
+          if (response.data[i]._id ==="Sports/Loisirs/Culture"){
+            sports = response.data[i].total;
+          }
+          if (response.data[i]._id ==="Maison/Habitat"){
+            maison = response.data[i].total;
+          }
+          if (response.data[i]._id ==="Obligation financière"){
+            finance = response.data[i].total;
+          }
+        }
+
+          let copy = [{name: 'Divertissement', value: divertissement},
+          {name: 'Maison/Habitat', value: maison}, 
+          {name: 'Obligation financière', value: finance},
+          {name: 'Sports/Loisirs/Culture', value: sports}, 
+          {name: 'Transports', value: transports}];
 
             this.setState({ 
               data : copy,
@@ -36,9 +58,6 @@ export default class PieChartCategory extends Component {
           
             console.log('response.data')
             console.log(response.data);
-            
-            console.log('this.state')
-            console.log(this.state)
 
             console.log('this.data.value')
             console.log(this.state.data);

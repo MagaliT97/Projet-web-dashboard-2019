@@ -8,6 +8,9 @@ export default props => {
       
       <Link to="/" className="menu-item"> Dashboard </Link>
       <Link to="/DisplayDepense" className="menu-item"> Afficher dépense</Link>
+      <Link to="/DisplayRevenu" className="menu-item"> Afficher revenu</Link>
+      <Link to="/DisplayBudget" className="menu-item"> Afficher budget</Link>
+
     </Menu>
   );
 };

@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import {Container,Form,Col,InputGroup,FormControl,Button,ButtonGroup} from 'react-bootstrap';
+import {Container,Form,Col,InputGroup,Button,ButtonGroup} from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import '../css/FormDepenses.css';
@@ -10,22 +10,20 @@ var label_transaction;
 
 export default class FormDepenses extends Component {
 
-  
+
   state = {
-    startDate: new Date(),
     show:true,
     LastInput:false,
 
     categorie:'',
     description:'',
     montant:'',
-    date:'',
+    startDate: new Date(),
   };
 
   handleChange= (e) =>{
     this.setState({
        [e.target.id]: e.target.value,
-       date:this.state.startDate
     })
   }
   handleSubmit= (e) =>{
@@ -36,22 +34,13 @@ export default class FormDepenses extends Component {
         categorie: this.state.categorie,
         description: this.state.description,
         montant: this.state.montant,
-        date:this.state.date
+        date:this.state.startDate.toLocaleString().substring(0,10),
       };
-      axios.post('http://localhost:4000/user/add', obj)
+      axios.post('http://localhost:4000/depense/add', obj)
           .then(res => console.log(res.data));
-      
-      this.setState({
-        categorie: '',
-        description: '',
-        montant: '',
-        date:''
-      })
+    
   }
-
-
   /*On affiche juste la date dans le cas ou l'utilisateur ne coche pas "transaction récurrente" */
-
   Display= () =>{
     if(this.state.show===true){
       displayDatePicker= <DatePicker className="datepicker" dateFormat="dd/MM/yyyy" selected={this.state.startDate} onChange={this.handleChangeDate}/> 
@@ -66,9 +55,7 @@ export default class FormDepenses extends Component {
   handleChangeDate = (date) => {
     this.setState({
       startDate: date,
-      date:date
     });
-    //this.toggleCalendarButton()
   }
   toggleCalendar= () => {
     if(this.state.show===true){
@@ -157,11 +144,12 @@ export default class FormDepenses extends Component {
               <Form.Group  controlId="categorie">
                 <Form.Label>Choissisez une catégorie</Form.Label>
                 <Form.Control as="select" onChange={this.handleChange}>
-                  <option>Maison/Habitat</option>
-                  <option>Obligation financière</option>
-                  <option>Sports/Loisirs/Culture</option> 
-                  <option>Divertissement</option>
-                  <option>Transports</option>
+                <option>Divertissement</option> 
+                <option>Maison/Habitat</option> 
+                <option>Obligation financière</option> 
+                <option>Sports/Loisirs/Culture</option> 
+                <option>Transports</option> 
+
                 </Form.Control>
               </Form.Group>
 

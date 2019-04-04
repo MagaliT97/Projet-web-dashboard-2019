@@ -13,7 +13,11 @@ import TodoList from './component/TodoList';
 import Calendrier from './component/Calendrier';
 import DisplayDepense from './component/DisplayDepense';
 import EditDepense from './component/EditDepense';
-
+import DisplayRevenu from './component/DisplayRevenu';
+import EditRevenu from './component/EditRevenu';
+import FormBudget from './component/FormBudget';
+import DisplayBudget from './component/DisplayBudget';
+import EditBudget from './component/EditBudget';
 
 
 class App extends Component {
@@ -35,7 +39,11 @@ class App extends Component {
             <Route path='/Calendrier' component={Calendrier}/>
             <Route path='/DisplayDepense' component={DisplayDepense}/>
             <Route path='/edit/:id' component={EditDepense} />
-
+            <Route path='/DisplayRevenu' component={DisplayRevenu}/>
+            <Route path='/FormBudget' component={FormBudget}/>
+            <Route path='/editRevenu/:id' component={EditRevenu} />
+            <Route path='/DisplayBudget' component={DisplayBudget}/>
+            <Route path='/editBudget/:id' component={EditBudget} />
 
             </switch>
         </div>

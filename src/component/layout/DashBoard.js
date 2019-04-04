@@ -7,14 +7,47 @@ import PieChartBudget from '../PieChartBudget';
 import ProgressionBarComponent from '../ProgressBarComponent';
 import TodoList from '../TodoList';
 import Calendrier from '../Calendrier';
-
-
+import axios from 'axios';
 
 class DashBoard extends Component {
   
   state = {
     items: [],
     currentItem: {text:'', key:''},
+
+    revenuMontant:'',
+    budgetMontant:'',
+    depenseMontant:'',
+  }
+
+  componentDidMount(){
+    axios.get('http://localhost:4000/budget')
+      .then(response => {
+      this.setState({budgetMontant: response.data[0].montant });
+      console.log(this.state.budgetMontant)
+    })
+    .catch(function (error) {
+      console.log(error);
+  })
+
+  axios.get('http://localhost:4000/revenu/sum')
+    .then(response => {
+      this.setState({revenuMontant: response.data[0].total });
+      console.log(this.state.revenuMontant)
+    })
+    .catch(function (error) {
+      console.log(error);
+  })
+
+  axios.get('http://localhost:4000/depense/sum')
+  .then(response => {
+    this.setState({depenseMontant: response.data[0].total });
+    console.log(this.state.depenseMontant)
+  })
+  .catch(function (error) {
+    console.log(error);
+})
+ 
   }
 
   handleInput = (e) => {
@@ -50,16 +83,17 @@ class DashBoard extends Component {
   render() {
     return (
       <div>
-          <Container className="main-content" media="main">
+          <Container className="main-content">
             <Row>
-                <Col lg={4} md={2}> <PieChartCategory/> </Col>
-                <Col lg={8} md={12}> <GraphCurve/> </Col>
+                <Col md={4}> <PieChartCategory/> </Col>
+                <Col md={8}> <GraphCurve/> </Col>
             </Row>
             <Row className="Second-Row">
-                <Col lg={4}><PieChartBudget/></Col>
-                <Col className="row2-col2" lg={4}>
+                <Col md={4}><PieChartBudget montantBudget={this.state.budgetMontant}
+                 montantRevenu={this.state.revenuMontant} montantDepense={this.state.depenseMontant} /></Col>
+                <Col className="row2-col2" md={4} >
                   <Row className="progress1">
-                    <ProgressionBarComponent/>
+                    <ProgressionBarComponent  montantRevenu={this.state.revenuMontant} montantDepense={this.state.depenseMontant}/>
                    
                   </Row>
                   <Row className="progress2">
@@ -71,7 +105,7 @@ class DashBoard extends Component {
                                     deleteItem={this.deleteItem}/>
                   </Row>
                 </Col>
-                <Col lg={4}>
+                <Col md={4}>
                    <Calendrier/>
                 </Col>
             </Row>
