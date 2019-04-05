@@ -99,8 +99,8 @@ return (
       <div>
           <Card className="card-credit" bg="Secondary" style={{ width: '23rem'}}>
           <Card.Body>
-            <Card.Title>Catégorie de dépenses</Card.Title>
-            <Card.Subtitle>Juin</Card.Subtitle>
+            <Card.Title>Catégorie des dépenses</Card.Title>
+            <Card.Subtitle>2019</Card.Subtitle>
             <PieChart width={400} height={190}>
         <Pie
           data={this.state.data}

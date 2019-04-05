@@ -1,3 +1,6 @@
+## Projet web 2019 Mathieu Djellali et Magali Treuvelot
+## Financial Dashboard 
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

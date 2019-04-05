@@ -41,7 +41,10 @@ export default class FormRevenu extends Component {
         date:this.state.startDate.toLocaleString().substring(0,10),
       };
       axios.post('http://localhost:4000/revenu/add', obj)
-          .then(res => console.log(res.data));
+          .then(res => {
+            console.log('add res')
+            console.log(res.data)});
+          
       
     }
 
