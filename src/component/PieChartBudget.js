@@ -102,11 +102,11 @@ class PieChartBudget extends Component {
               </Pie>  
               </PieChart>
                <Card.Text>
-                  Revenu : <span className="data-user"> {this.DetectRevenuUndefined(this.props.montantRevenu)+"€"} 
+                  Revenu : <span className="data-user"> {this.DetectRevenuUndefined(this.props.montantRevenu)} 
                   {displayRevenu}</span> <br/>
-                  Budget prévisionnel : <span className="data-user">{this.DetectBudgetUndefined(this.props.montantBudget)+"€"}
+                  Budget prévisionnel : <span className="data-user">{this.DetectBudgetUndefined(this.props.montantBudget)}
                   {displayBudget}</span> <br/>
-                  Solde prévisionnel : <span className="data-user">{this.solde(this.props.montantRevenu,this.props.montantBudget)+"€"}</span><br/> 
+                  Solde prévisionnel : <span className="data-user">{this.solde(this.props.montantRevenu,this.props.montantBudget)}</span><br/> 
               </Card.Text>
             </Card.Body>
           </Card>

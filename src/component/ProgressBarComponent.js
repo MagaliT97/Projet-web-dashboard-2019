@@ -33,7 +33,7 @@ class ProgressionBarComponent extends React.Component {
       montantDepense="Ajouter une dépense"
     }
     else{
-      displayDepense="Dépenses"
+      displayDepense="Dépenses en €"
       displayTitle=null
       montantDepense=depense
       pourcentageBar = Math.round((this.props.montantDepense/this.props.montantRevenu)*100);
@@ -63,8 +63,8 @@ class ProgressionBarComponent extends React.Component {
             <Card.Title>{displayDepense}{displayTitle}</Card.Title>
             <div className="texte">
             Dépenses réelles à ce jour <span className="restant">Restant</span><br/>
-            {montantDepense+"€"}
-            <span className="restant"> {this.solde(this.props.montantRevenu,this.props.montantDepense)+"€"} </span>
+            {montantDepense}
+            <span className="restant"> {this.solde(this.props.montantRevenu,this.props.montantDepense)} </span>
             </div>
             <div className="progressInstance">{progressInstance} </div>
           </Card.Body>
